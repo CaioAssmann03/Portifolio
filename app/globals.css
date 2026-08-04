@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #000000;
+  --panel: #131313;
+  --hairline: #ffffff;
+  --paper: #ffffff;
+  --haze: #9a9a9a;
+  --signal: #3d6bff;
+  --wordmark-opacity: 0.07;
+}
+
+.light {
+  --bg: #ffffff;
+  --panel: #f4f4f4;
+  --hairline: #000000;
+  --paper: #0a0a0a;
+  --haze: #5a5a5a;
+  --signal: #2552e0;
+  --wordmark-opacity: 0.16;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-ink: var(--bg);
+  --color-panel: var(--panel);
+  --color-hairline: var(--hairline);
+  --color-paper: var(--paper);
+  --color-haze: var(--haze);
+  --color-signal: var(--signal);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+body {
+  background-color: var(--color-ink);
+}
+
+::selection {
+  background-color: var(--color-signal);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-hairline);
+  opacity: 0.2;
+  border-radius: 999px;
+}
+
+/* Custom cursor: hide the native cursor once CustomCursor.tsx is active */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
