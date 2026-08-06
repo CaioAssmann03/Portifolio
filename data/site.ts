@@ -12,7 +12,7 @@ export const site = {
   whatsapp: "https://wa.me/5551991934351",
   // Usado em metadata, sitemap e Open Graph. Troque pelo domínio real após o deploy.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://caioassmann.dev",
-  resumeUrl: "/resume.pdf",
+  curriculoUrl: "/Caio_Assmann_Curriculo.pdf",
 } as const;
 
 export const socialLinks: SocialLink[] = [

@@ -95,7 +95,7 @@ export function Hero() {
           <Button variant="primary" onClick={() => scrollToSection("#projetos")}>
             Ver projetos
           </Button>
-          <Button variant="outline" href={site.resumeUrl} download icon={<Download size={14} />}>
+          <Button variant="outline" href={site.curriculoUrl} download icon={<Download size={14} />}>
             Download CV
           </Button>
         </motion.div>
