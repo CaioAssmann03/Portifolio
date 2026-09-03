@@ -9,8 +9,10 @@ import {
   Library,
   KeyRound,
   Sparkles,
-  Code2,
+  Wallet,
   Briefcase,
+  Users,
+  Code2,
   Mail,
   MessageCircle,
   type LucideIcon,
@@ -30,6 +32,9 @@ export const projectIcons: Record<string, LucideIcon> = {
   library: Library,
   keyRound: KeyRound,
   sparkles: Sparkles,
+  wallet: Wallet,
+  briefcase: Briefcase,
+  users: Users,
 };
 
 export const socialIcons: Record<string, LucideIcon> = {

@@ -28,7 +28,7 @@ export interface Project {
   tags: string[];
   repoUrl: string;
   demoUrl?: string;
-  icon: "map" | "building2" | "library" | "keyRound" | "sparkles";
+  icon: "map" | "building2" | "library" | "keyRound" | "sparkles" | "wallet" | "briefcase" | "users";
 }
 
 export interface Certification {
