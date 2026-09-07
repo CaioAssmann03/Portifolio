@@ -2,17 +2,17 @@ import type { SocialLink } from "@/types";
 
 export const site = {
   name: "Caio Assmann",
-  role: "Data Analyst · Python Developer · Backend Developer",
-  roles: ["Data Analyst", "Python Developer", "Backend Developer"],
-  tagline:
-    "Transformando dados em decisões inteligentes através de Python, SQL e Business Intelligence.",
+  role: "Desenvolvedor de Software · Dados & Backend",
+  roles: ["Desenvolvedor de Software", "Analista de Dados", "Backend Developer", "Full-Stack"],
+  tagline: "Construo software e transformo dados em decisões: Python, SQL, APIs e Power BI.",
   email: "caioassmann7@gmail.com",
   github: "https://github.com/CaioAssmann03",
   linkedin: "https://www.linkedin.com/in/caio-assmann/",
   whatsapp: "https://wa.me/5551991934351",
-  // Usado em metadata, sitemap e Open Graph. Troque pelo domínio real após o deploy.
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://caioassmann.dev",
+  // Usado em metadata, sitemap e Open Graph. Troque quando um domínio próprio existir.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://caio-assmann.vercel.app",
   curriculoUrl: "/Caio_Assmann_Curriculo.pdf",
+  photoUrl: "/profile.jpg",
 } as const;
 
 export const socialLinks: SocialLink[] = [

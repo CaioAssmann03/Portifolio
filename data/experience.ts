@@ -29,7 +29,7 @@ export const journey: JourneyItem[] = [
     role: "Análise e Desenvolvimento de Sistemas",
     period: "Fevereiro de 2024 — Em andamento",
     bullets: [
-      "Foco em dados, backend e engenharia de software",
+      "Foco em desenvolvimento de software, dados e backend",
       "Projetos práticos aplicando Python, SQL e Machine Learning",
     ],
   },
