@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface ProgressBarProps {
   label: string;
   level: number;
+  barClassName?: string;
 }
 
-export function ProgressBar({ label, level }: ProgressBarProps) {
+export function ProgressBar({ label, level, barClassName = "bg-signal" }: ProgressBarProps) {
   return (
     <div>
       <div className="mb-1.5 flex items-center justify-between">
@@ -16,7 +17,7 @@ export function ProgressBar({ label, level }: ProgressBarProps) {
       </div>
       <div className="h-1 w-full overflow-hidden rounded-full bg-paper/10">
         <motion.div
-          className="h-full rounded-full bg-signal"
+          className={`h-full rounded-full ${barClassName}`}
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true }}

@@ -56,7 +56,7 @@ export function Navbar() {
           caio<span className="text-signal">.</span>dev
         </a>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
           {navLinks.map((link) => (
             <button
               key={link.href}
@@ -73,7 +73,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden items-center gap-3 lg:flex">
           <button
             aria-label="Alternar tema"
             onClick={toggle}
@@ -92,7 +92,7 @@ export function Navbar() {
         <button
           aria-label="Abrir menu"
           onClick={() => setOpen(true)}
-          className="text-paper md:hidden"
+          className="text-paper lg:hidden"
         >
           <Menu size={24} />
         </button>
@@ -111,7 +111,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl md:hidden"
+            className="fixed inset-0 z-50 bg-ink/95 backdrop-blur-xl lg:hidden"
           >
             <div className="flex h-20 items-center justify-between px-6">
               <span className="font-mono text-sm font-semibold text-paper">

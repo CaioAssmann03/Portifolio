@@ -15,9 +15,19 @@ export function AnimatedCounter({ value, duration = 1200, suffix = "" }: Animate
   const inView = useInView(ref, { once: true, margin: "-40px" });
   const reduced = useReducedMotion();
   const [display, setDisplay] = useState(reduced ? value : 0);
+  const [forced, setForced] = useState(false);
+
+  // Safety net: this component nests its own useInView inside sections that are
+  // already gated by <Reveal>'s own useInView. That double observer occasionally
+  // never reports true (same class of bug Reveal.tsx guards against), leaving the
+  // counter stuck at 0 forever. Force it to run after a short delay regardless.
+  useEffect(() => {
+    const timeout = setTimeout(() => setForced(true), 900);
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
-    if (!inView || reduced) return;
+    if (reduced || !(inView || forced)) return;
     const start = performance.now();
 
     function tick(now: number) {
@@ -29,7 +39,7 @@ export function AnimatedCounter({ value, duration = 1200, suffix = "" }: Animate
 
     const frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [inView, value, duration, reduced]);
+  }, [inView, forced, value, duration, reduced]);
 
   return (
     <span ref={ref}>

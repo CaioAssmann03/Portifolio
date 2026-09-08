@@ -25,7 +25,7 @@ export function Footer() {
           })}
         </div>
         <p className="font-mono text-[11px] uppercase tracking-wider text-haze">
-          © {year} {site.name} — construído com Next.js, TypeScript e café.
+          © {year} {site.name}. Construído com Next.js, TypeScript e café.
         </p>
       </div>
     </footer>

@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { MouseEventHandler, ReactNode } from "react";
+import { motion, useMotionValue, useSpring } from "framer-motion";
+import type { MouseEvent, MouseEventHandler, ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type Variant = "primary" | "outline" | "ghost";
 
@@ -38,8 +39,31 @@ const variants: Record<Variant, string> = {
     "bg-transparent text-haze border border-transparent hover:text-paper underline-offset-4 hover:underline",
 };
 
+const MAGNETIC_STRENGTH = 0.35;
+const MAGNETIC_MAX = 10;
+
 export function Button(props: ButtonProps) {
   const { children, variant = "primary", className, icon } = props;
+  const reduced = useReducedMotion();
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 300, damping: 20, mass: 0.5 });
+  const springY = useSpring(y, { stiffness: 300, damping: 20, mass: 0.5 });
+
+  function handleMouseMove(event: MouseEvent<HTMLElement>) {
+    if (reduced || variant === "ghost") return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const offsetX = event.clientX - (rect.left + rect.width / 2);
+    const offsetY = event.clientY - (rect.top + rect.height / 2);
+    x.set(Math.max(-MAGNETIC_MAX, Math.min(MAGNETIC_MAX, offsetX * MAGNETIC_STRENGTH)));
+    y.set(Math.max(-MAGNETIC_MAX, Math.min(MAGNETIC_MAX, offsetY * MAGNETIC_STRENGTH)));
+  }
+
+  function handleMouseLeave() {
+    x.set(0);
+    y.set(0);
+  }
 
   const classes = cn(
     "inline-flex items-center gap-2 rounded-full px-6 py-3 font-mono text-[13px] font-medium tracking-wide transition-colors duration-200",
@@ -55,6 +79,9 @@ export function Button(props: ButtonProps) {
         rel={props.rel}
         download={props.download}
         className={classes}
+        style={{ x: springX, y: springY }}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
         whileTap={{ scale: 0.96 }}
       >
         {children}
@@ -71,6 +98,9 @@ export function Button(props: ButtonProps) {
       disabled={disabled}
       onClick={onClick}
       className={classes}
+      style={{ x: springX, y: springY }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       whileTap={{ scale: 0.96 }}
     >
       {children}

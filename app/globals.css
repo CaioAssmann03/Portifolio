@@ -7,6 +7,8 @@
   --paper: #ffffff;
   --haze: #9a9a9a;
   --signal: #3d6bff;
+  --signal-2: #a855f7;
+  --signal-3: #f5b93d;
   --wordmark-opacity: 0.07;
 }
 
@@ -17,6 +19,8 @@
   --paper: #0a0a0a;
   --haze: #5a5a5a;
   --signal: #2552e0;
+  --signal-2: #9333ea;
+  --signal-3: #d97706;
   --wordmark-opacity: 0.16;
 }
 
@@ -30,6 +34,8 @@
   --color-paper: var(--paper);
   --color-haze: var(--haze);
   --color-signal: var(--signal);
+  --color-signal-2: var(--signal-2);
+  --color-signal-3: var(--signal-3);
 }
 
 html {

@@ -55,7 +55,7 @@ export function Contact() {
         <SectionHeading
           index="06"
           title="Vamos conversar?"
-          description="Aberto a oportunidades em dados, IA e backend. Me chama por aqui ou por um dos canais diretos."
+          description="Aberto a oportunidades em desenvolvimento de software, dados e backend. Me chama por aqui ou por um dos canais diretos."
         />
 
         <div className="grid gap-10 md:grid-cols-[1fr_1.3fr]">
@@ -147,7 +147,7 @@ export function Contact() {
 
                 {status === "success" ? (
                   <p className="flex items-center gap-2 text-[13px] text-signal">
-                    <CheckCircle2 size={15} /> Mensagem enviada — retorno em breve.
+                    <CheckCircle2 size={15} /> Mensagem enviada. Retorno em breve.
                   </p>
                 ) : null}
                 {status === "error" ? (

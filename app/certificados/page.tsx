@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Certificados",
-  description: `Todos os certificados de ${site.name} — ${certificationsMeta.totalHours} de estudo na Alura.`,
+  description: `Todos os certificados de ${site.name}. ${certificationsMeta.totalHours} de estudo na Alura.`,
 };
 
 export default function CertificadosPage() {
@@ -26,7 +26,7 @@ export default function CertificadosPage() {
           Certificados
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-haze">
-          Todos os cursos concluídos na Alura, agrupados por trilha —{" "}
+          Todos os cursos concluídos na Alura, agrupados por trilha:{" "}
           {certificationsMeta.totalHours} de estudo entre {certificationsMeta.period}.
           Certificado consolidado verificável no link abaixo.
         </p>
