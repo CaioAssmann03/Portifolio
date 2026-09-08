@@ -16,6 +16,7 @@ export const projects: Project[] = [
       "Controle financeiro pessoal para substituir planilha: lançamento em segundos, parcelamento, fatura de cartão, metas e importação de extrato (OFX/CSV/XLS). Full-stack com Next.js e Supabase (Postgres + Auth + Row Level Security), PWA instalável.",
     tags: ["Next.js", "TypeScript", "React", "Supabase", "Tailwind CSS"],
     repoUrl: "https://github.com/CaioAssmann03/Finance_IA",
+    demoUrl: "https://financeia2026.vercel.app/login",
     icon: "wallet",
   },
   {
