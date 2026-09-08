@@ -8,6 +8,12 @@ import { projects, moreProjectsNote } from "@/data/projects";
 import { site } from "@/data/site";
 import { pad2 } from "@/utils/helpers";
 
+const accents = [
+  { wash: "from-signal/20", icon: "text-signal/40" },
+  { wash: "from-signal-2/20", icon: "text-signal-2/40" },
+  { wash: "from-signal-3/20", icon: "text-signal-3/40" },
+];
+
 export function Projects() {
   return (
     <section id="projetos" className="py-24 md:py-32">
@@ -15,21 +21,27 @@ export function Projects() {
         <SectionHeading
           index="04"
           title="Projetos"
-          description="Do dado bruto ao insight — Python, SQL e Power BI em cenários reais."
+          description="De APIs a dashboards: Python, SQL, backend e Power BI em cenários reais."
         />
 
         <div className="grid gap-6 sm:grid-cols-2">
           {projects.map((project, i) => {
             const Icon = projectIcons[project.icon];
+            const accent = accents[i % accents.length];
             return (
               <Reveal key={project.slug} delay={i * 0.06}>
                 <TiltCard>
                   <GlassPanel className="group flex h-full flex-col overflow-hidden transition-colors hover:border-paper/25">
-                    <div className="relative flex h-36 items-center justify-center overflow-hidden border-b border-paper/10 bg-gradient-to-br from-signal/20 via-transparent to-transparent">
+                    <div
+                      className={`relative flex h-36 items-center justify-center overflow-hidden border-b border-paper/10 bg-gradient-to-br ${accent.wash} via-transparent to-transparent`}
+                    >
                       <span className="font-mono text-[11px] text-haze/70 absolute left-4 top-4">
                         P.{pad2(i + 1)}
                       </span>
-                      <Icon size={40} className="text-paper/25 transition-transform duration-300 group-hover:scale-110" />
+                      <Icon
+                        size={40}
+                        className={`${accent.icon} transition-transform duration-300 group-hover:scale-110`}
+                      />
                     </div>
                     <div className="flex flex-1 flex-col p-6">
                       <h3 className="mb-2 text-lg font-semibold text-paper">{project.name}</h3>

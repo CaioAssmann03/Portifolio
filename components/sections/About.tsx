@@ -21,25 +21,26 @@ export function About() {
         <SectionHeading
           index="01"
           title="Sobre mim"
-          description="De processos administrativos a pipelines de dados — a mesma obsessão por organização, aplicada em escala."
+          description="De processos administrativos a sistemas em produção: a mesma obsessão por organização, aplicada em escala."
         />
 
         <div className="grid gap-16 md:grid-cols-[1.4fr_1fr]">
           <Reveal delay={0.1} className="space-y-5 text-[15.5px] leading-relaxed text-haze">
             <p>
               Sou <span className="text-paper">Caio Assmann</span>, estudante de Análise e
-              Desenvolvimento de Sistemas no Senac, com foco em dados, Python e backend. Comecei
+              Desenvolvimento de Sistemas no Senac, com foco em desenvolvimento de software, dados
+              e backend. Comecei
               como estagiário na Secretaria da Saúde de Porto Alegre, com apoio administrativo e
               lançamento de dados internos, e hoje atuo na Eve Imóveis com administração
-              condominial, locações e organização de informações de imóveis — uma vivência
-              prática que me deu um olhar apurado para dados bagunçados e processos que precisam
-              de estrutura.
+              condominial, locações e organização de informações de imóveis. Uma vivência
+              prática que me deu um olhar apurado para processos bagunçados e sistemas que
+              precisam de estrutura.
             </p>
             <p>
-              Estou aplicando esse olhar para transformar dados brutos em decisões, dashboards e
-              sistemas em produção. Construo, projeto após projeto, uma base sólida em SQL,
-              Python, Power BI e APIs, sempre documentando o processo e compartilhando o
-              aprendizado.
+              Estou aplicando esse olhar para construir software e transformar dados em
+              decisões: sistemas, APIs e dashboards em produção. Construo, projeto após projeto,
+              uma base sólida em Python, SQL, backend e Power BI, sempre documentando o processo
+              e compartilhando o aprendizado.
             </p>
           </Reveal>
 

@@ -40,7 +40,7 @@ export const projects: Project[] = [
     slug: "people-analytics",
     name: "People Analytics",
     description:
-      "Análise de turnover de 1.470 funcionários (IBM HR Analytics): regressão logística balanceada e dashboard de 3 páginas no Power BI, modelo semântico versionado como projeto (.pbip). O cruzamento entre salário e hora extra separa um grupo com 58,5% de saída contra 7,2% no extremo oposto, e o modelo escolhido identifica 64,4% de quem realmente sai — priorizando recall em vez de acurácia, que em base desbalanceada esconde o problema.",
+      "Análise de turnover de 1.470 funcionários (IBM HR Analytics): regressão logística balanceada e dashboard de 3 páginas no Power BI, modelo semântico versionado como projeto (.pbip). O cruzamento entre salário e hora extra separa um grupo com 58,5% de saída contra 7,2% no extremo oposto, e o modelo escolhido identifica 64,4% de quem realmente sai, priorizando recall em vez de acurácia, que em base desbalanceada esconde o problema.",
     tags: ["Python", "scikit-learn", "Power BI", "DAX"],
     repoUrl: "https://github.com/CaioAssmann03/people-analytics-IBM",
     icon: "users",
@@ -74,5 +74,4 @@ export const projects: Project[] = [
   },
 ];
 
-export const moreProjectsNote =
-  "Mais projetos a caminho — acompanhe o progresso no GitHub.";
+export const moreProjectsNote = "Mais projetos a caminho. Acompanhe o progresso no GitHub.";
