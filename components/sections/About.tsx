@@ -28,7 +28,8 @@ export function About() {
           <Reveal delay={0.1} className="space-y-5 text-[15.5px] leading-relaxed text-haze">
             <p>
               Sou <span className="text-paper">Caio Assmann</span>, estudante de Análise e
-              Desenvolvimento de Sistemas no Senac, com foco em dados, Python e backend. Comecei
+              Desenvolvimento de Sistemas no Senac, com foco em desenvolvimento de software, dados
+              e backend. Comecei
               como estagiário na Secretaria da Saúde de Porto Alegre, com apoio administrativo e
               lançamento de dados internos, e hoje atuo na Eve Imóveis com administração
               condominial, locações e organização de informações de imóveis. Uma vivência
