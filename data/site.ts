@@ -13,7 +13,7 @@ export const site = {
   // Usado em metadata, sitemap e Open Graph. Troque quando um domínio próprio existir.
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://caio-assmann.vercel.app",
   curriculoUrl: "/Caio_Assmann_Curriculo.pdf",
-  photoUrl: "/profile.png",
+  photoUrl: "/profile.jpg",
 } as const;
 
 export const socialLinks: SocialLink[] = [

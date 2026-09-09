@@ -75,6 +75,34 @@ html.custom-cursor * {
   cursor: none !important;
 }
 
+/* Aurora hero background: plain CSS keyframes so the drift runs on the
+   compositor thread instead of competing with React/JS on the main thread. */
+@keyframes aurora-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(40px, 30px);
+  }
+  66% {
+    transform: translate(-20px, -10px);
+  }
+}
+
+@keyframes aurora-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  33% {
+    transform: translate(-30px, -20px);
+  }
+  66% {
+    transform: translate(20px, 20px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

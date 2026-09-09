@@ -48,7 +48,7 @@ export function ProfilePhoto({ className }: { className?: string }) {
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
             <span className="font-mono text-7xl font-bold text-paper/10">{initials}</span>
             <span className="font-mono text-[11px] uppercase tracking-wider text-haze/70">
-              Adicione public/profile.png
+              Adicione public/profile.jpg
             </span>
           </div>
         )}
