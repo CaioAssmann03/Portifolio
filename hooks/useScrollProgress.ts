@@ -7,14 +7,24 @@ export function useScrollProgress() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
+    let ticking = false;
+
+    const measure = () => {
       const doc = document.documentElement;
       const scrollTop = doc.scrollTop || document.body.scrollTop;
       const height = doc.scrollHeight - doc.clientHeight;
       setProgress(height > 0 ? scrollTop / height : 0);
       setScrolled(scrollTop > 24);
+      ticking = false;
     };
-    onScroll();
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(measure);
+    };
+
+    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
