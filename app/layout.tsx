@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { site } from "@/data/site";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ScrollProgressProvider } from "@/components/providers/ScrollProgressProvider";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { BackToTop } from "@/components/layout/BackToTop";
@@ -103,17 +104,19 @@ export default function RootLayout({
       </head>
       <body className="bg-ink font-sans text-paper antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <a
-            href="#top"
-            className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-paper px-4 py-2 font-mono text-[12px] text-ink transition-transform focus:translate-y-0"
-          >
-            Pular para o conteúdo
-          </a>
-          <CustomCursor />
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <BackToTop />
+          <ScrollProgressProvider>
+            <a
+              href="#top"
+              className="fixed left-3 top-3 z-[100] -translate-y-24 rounded-full bg-paper px-4 py-2 font-mono text-[12px] text-ink transition-transform focus:translate-y-0"
+            >
+              Pular para o conteúdo
+            </a>
+            <CustomCursor />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <BackToTop />
+          </ScrollProgressProvider>
         </ThemeProvider>
       </body>
     </html>

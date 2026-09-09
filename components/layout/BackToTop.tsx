@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { useScrollProgress } from "@/components/providers/ScrollProgressProvider";
 
 export function BackToTop() {
   const { scrolled } = useScrollProgress();

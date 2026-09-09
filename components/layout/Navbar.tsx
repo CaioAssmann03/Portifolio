@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { navLinks } from "@/data/nav";
 import { useActiveSection } from "@/hooks/useActiveSection";
-import { useScrollProgress } from "@/hooks/useScrollProgress";
+import { useScrollProgress } from "@/components/providers/ScrollProgressProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { scrollToSection } from "@/utils/helpers";
 import { cn } from "@/lib/utils";

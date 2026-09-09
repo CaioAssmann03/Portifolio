@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 const INTERACTIVE_SELECTOR = "a, button, input, textarea, [role='button'], [data-cursor-hover]";
 
@@ -10,15 +11,15 @@ export function CustomCursor() {
   const [enabled, setEnabled] = useState(false);
   const [hovering, setHovering] = useState(false);
   const reduced = useReducedMotion();
+  const isTouch = useIsTouchDevice();
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const ringX = useSpring(x, { stiffness: 300, damping: 30 });
   const ringY = useSpring(y, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
     if (isTouch || reduced) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time device check on mount, not an external subscription
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- derived from a device check, not an external subscription
     setEnabled(true);
     document.documentElement.classList.add("custom-cursor");
 
@@ -37,7 +38,7 @@ export function CustomCursor() {
       window.removeEventListener("mouseover", handleOver);
       document.documentElement.classList.remove("custom-cursor");
     };
-  }, [reduced, x, y]);
+  }, [isTouch, reduced, x, y]);
 
   if (!enabled) return null;
 
