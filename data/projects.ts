@@ -47,6 +47,15 @@ export const projects: Project[] = [
     icon: "users",
   },
   {
+    slug: "lgpd-em-sql",
+    name: "LGPD em SQL",
+    description:
+      "Base sintética de uma loja fictícia (400 clientes, gerados com Faker pt_BR) com mascaramento de CPF/e-mail/telefone, pseudonimização e 4 views de acesso por papel (Atendimento, Financeiro, Marketing, DPO), tudo em SQL puro. A pseudonimização usa chave substituta em vez de hash: CPF tem só 11 dígitos, então um hash determinístico seria quebrável por força bruta em minutos.",
+    tags: ["SQL", "SQLite", "LGPD", "Python"],
+    repoUrl: "https://github.com/CaioAssmann03/lgpd-anonimizacao-sql",
+    icon: "shieldCheck",
+  },
+  {
     slug: "criminalidade-rs",
     name: "Análise de Criminalidade no RS",
     description:

@@ -15,6 +15,7 @@ import {
   Code2,
   Mail,
   MessageCircle,
+  ShieldCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -35,6 +36,7 @@ export const projectIcons: Record<string, LucideIcon> = {
   wallet: Wallet,
   briefcase: Briefcase,
   users: Users,
+  shieldCheck: ShieldCheck,
 };
 
 export const socialIcons: Record<string, LucideIcon> = {
