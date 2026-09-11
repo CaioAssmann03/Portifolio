@@ -46,6 +46,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+  alternates: {
+    canonical: site.url,
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -72,9 +75,29 @@ const jsonLd = {
   "@type": "Person",
   name: site.name,
   jobTitle: site.role,
+  description: site.tagline,
   url: site.url,
   email: site.email,
   sameAs: [site.github, site.linkedin],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Porto Alegre",
+    addressRegion: "RS",
+    addressCountry: "BR",
+  },
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Senac RS",
+  },
+  knowsAbout: [
+    "Python",
+    "SQL",
+    "Power BI",
+    "Next.js",
+    "React",
+    "Análise de Dados",
+    "Desenvolvimento Backend",
+  ],
 };
 
 const themeInitScript = `

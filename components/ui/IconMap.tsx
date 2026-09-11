@@ -16,6 +16,7 @@ import {
   Mail,
   MessageCircle,
   ShieldCheck,
+  Fingerprint,
   type LucideIcon,
 } from "lucide-react";
 
@@ -37,6 +38,7 @@ export const projectIcons: Record<string, LucideIcon> = {
   briefcase: Briefcase,
   users: Users,
   shieldCheck: ShieldCheck,
+  fingerprint: Fingerprint,
 };
 
 export const socialIcons: Record<string, LucideIcon> = {

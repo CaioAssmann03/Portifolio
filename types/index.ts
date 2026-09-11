@@ -28,7 +28,17 @@ export interface Project {
   tags: string[];
   repoUrl: string;
   demoUrl?: string;
-  icon: "map" | "building2" | "library" | "keyRound" | "sparkles" | "wallet" | "briefcase" | "users" | "shieldCheck";
+  icon:
+    | "map"
+    | "building2"
+    | "library"
+    | "keyRound"
+    | "sparkles"
+    | "wallet"
+    | "briefcase"
+    | "users"
+    | "shieldCheck"
+    | "fingerprint";
 }
 
 export interface Certification {
