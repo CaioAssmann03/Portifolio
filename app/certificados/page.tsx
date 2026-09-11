@@ -9,6 +9,7 @@ import { site } from "@/data/site";
 export const metadata: Metadata = {
   title: "Certificados",
   description: `Todos os certificados de ${site.name}. ${certificationsMeta.totalHours} de estudo na Alura.`,
+  alternates: { canonical: `${site.url}/certificados` },
 };
 
 export default function CertificadosPage() {

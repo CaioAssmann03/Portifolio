@@ -1,20 +1,14 @@
-import { Code2, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
-import { GlassPanel } from "@/components/ui/GlassPanel";
-import { TiltCard } from "@/components/ui/TiltCard";
-import { projectIcons } from "@/components/ui/IconMap";
-import { projects, moreProjectsNote } from "@/data/projects";
-import { site } from "@/data/site";
-import { pad2 } from "@/utils/helpers";
-
-const accents = [
-  { wash: "from-signal/20", icon: "text-signal/40" },
-  { wash: "from-signal-2/20", icon: "text-signal-2/40" },
-  { wash: "from-signal-3/20", icon: "text-signal-3/40" },
-];
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { projects, FEATURED_PROJECTS_COUNT } from "@/data/projects";
 
 export function Projects() {
+  const featured = projects.slice(0, FEATURED_PROJECTS_COUNT);
+  const hasMore = projects.length > featured.length;
+
   return (
     <section id="projetos" className="py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
@@ -25,74 +19,23 @@ export function Projects() {
         />
 
         <div className="grid gap-6 sm:grid-cols-2">
-          {projects.map((project, i) => {
-            const Icon = projectIcons[project.icon];
-            const accent = accents[i % accents.length];
-            return (
-              <Reveal key={project.slug} delay={i * 0.06}>
-                <TiltCard>
-                  <GlassPanel className="group flex h-full flex-col overflow-hidden transition-colors hover:border-paper/25">
-                    <div
-                      className={`relative flex h-36 items-center justify-center overflow-hidden border-b border-paper/10 bg-gradient-to-br ${accent.wash} via-transparent to-transparent`}
-                    >
-                      <span className="font-mono text-[11px] text-haze/70 absolute left-4 top-4">
-                        P.{pad2(i + 1)}
-                      </span>
-                      <Icon
-                        size={40}
-                        className={`${accent.icon} transition-transform duration-300 group-hover:scale-110`}
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-6">
-                      <h3 className="mb-2 text-lg font-semibold text-paper">{project.name}</h3>
-                      <p className="mb-4 flex-1 text-[14px] leading-relaxed text-haze">
-                        {project.description}
-                      </p>
-                      <div className="mb-5 flex flex-wrap gap-2">
-                        {project.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full border border-paper/10 px-2.5 py-1 font-mono text-[10.5px] text-haze"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex gap-5 font-mono text-[12px]">
-                        <a
-                          href={project.repoUrl}
-                          className="flex items-center gap-1.5 text-paper/80 transition-colors hover:text-signal"
-                        >
-                          <Code2 size={13} /> Repositório
-                        </a>
-                        {project.demoUrl ? (
-                          <a
-                            href={project.demoUrl}
-                            className="flex items-center gap-1.5 text-paper/80 transition-colors hover:text-signal"
-                          >
-                            <ExternalLink size={13} /> Demo
-                          </a>
-                        ) : null}
-                      </div>
-                    </div>
-                  </GlassPanel>
-                </TiltCard>
-              </Reveal>
-            );
-          })}
-
-          <Reveal delay={projects.length * 0.06}>
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noreferrer"
-              className="flex h-full min-h-[19rem] flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-paper/15 p-6 text-center transition-colors hover:border-signal/50"
-            >
-              <Sparkles size={28} className="text-signal" />
-              <p className="max-w-[16rem] text-[14px] text-haze">{moreProjectsNote}</p>
-            </a>
-          </Reveal>
+          {featured.map((project, i) => (
+            <Reveal key={project.slug} delay={i * 0.06}>
+              <ProjectCard project={project} index={i} />
+            </Reveal>
+          ))}
         </div>
+
+        {hasMore ? (
+          <Reveal delay={featured.length * 0.06} className="mt-8 flex justify-center">
+            <Link
+              href="/projetos"
+              className="flex items-center gap-2 rounded-full border border-paper/20 px-6 py-3 font-mono text-[13px] text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
+            >
+              Ver todos os projetos <ArrowRight size={14} />
+            </Link>
+          </Reveal>
+        ) : null}
       </div>
     </section>
   );
