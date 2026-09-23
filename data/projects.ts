@@ -4,18 +4,10 @@ import type { Project } from "@/types";
 // Ainda assim, revise o texto com sua própria voz antes de publicar uma mudança.
 //
 // Ordem importa: a home mostra só os primeiros FEATURED_PROJECTS_COUNT (ver
-// components/sections/Projects.tsx), o resto aparece em /projetos. Os mais
-// fortes/diversos vêm primeiro.
+// components/sections/Projects.tsx), o resto aparece em /projetos. Destaque
+// é pra projetos de software/backend mais avançados tecnicamente, não pra
+// todos os projetos de dados — curadoria pedida pelo Caio em 2026-09-23.
 export const projects: Project[] = [
-  {
-    slug: "people-analytics",
-    name: "People Analytics",
-    description:
-      "Análise de turnover de 1.470 funcionários (IBM HR Analytics): regressão logística balanceada e dashboard de 3 páginas no Power BI, modelo semântico versionado como projeto (.pbip). O cruzamento entre salário e hora extra separa um grupo com 58,5% de saída contra 7,2% no extremo oposto, e o modelo escolhido identifica 64,4% de quem realmente sai, priorizando recall em vez de acurácia, que em base desbalanceada esconde o problema.",
-    tags: ["Python", "scikit-learn", "Power BI", "DAX"],
-    repoUrl: "https://github.com/CaioAssmann03/people-analytics-IBM",
-    icon: "users",
-  },
   {
     slug: "finance-ia",
     name: "Finance IA",
@@ -36,13 +28,31 @@ export const projects: Project[] = [
     icon: "dumbbell",
   },
   {
-    slug: "automacoes-imobiliaria",
-    name: "Automações de Imobiliária",
+    slug: "api-documentos",
+    name: "API de Documentos",
     description:
-      "4 automações em Python para o administrativo da imobiliária onde trabalho: leem relatórios em PDF do sistema de gestão, cruzam com planilhas de cadastro e geram recibos e listas prontos pra imprimir, sem passar pelo Word. Cada uma confere os próprios números antes de gerar o PDF final (compara totais com os lotes de origem, avisa divergência de código ou UC). O que levava horas por mês sai em segundos.",
-    tags: ["Python", "pdfplumber", "openpyxl", "reportlab"],
-    repoUrl: "https://github.com/CaioAssmann03/AUTOMACOES-IMOBILIARIA",
-    icon: "receipt",
+      "CRUD REST com FastAPI e SQLModel (a mesma classe serve de schema de validação e de tabela do banco): paginação, filtro por categoria, busca por título e um endpoint de estatísticas de leitura. Base para os próximos projetos do roadmap (autenticação, agente com LangChain, RAG), pensada pra crescer em vez de ficar isolada. 7 testes com pytest, banco em memória que não toca no banco de desenvolvimento.",
+    tags: ["Python", "FastAPI", "SQLModel", "pytest"],
+    repoUrl: "https://github.com/CaioAssmann03/api-documentos",
+    icon: "fileText",
+  },
+  {
+    slug: "api-biblioteca",
+    name: "API Biblioteca",
+    description:
+      "API REST para controle de acervo, empréstimos e usuários de uma biblioteca, com autenticação JWT e PostgreSQL. Arquitetura em camadas (router, controller, service, repository). Projeto em equipe, com mais dois colegas.",
+    tags: ["Node.js", "Express", "PostgreSQL", "JWT"],
+    repoUrl: "https://github.com/CaioAssmann03/API_BIBLIOTECA",
+    icon: "library",
+  },
+  {
+    slug: "people-analytics",
+    name: "People Analytics",
+    description:
+      "Análise de turnover de 1.470 funcionários (IBM HR Analytics): regressão logística balanceada e dashboard de 3 páginas no Power BI, modelo semântico versionado como projeto (.pbip). O cruzamento entre salário e hora extra separa um grupo com 58,5% de saída contra 7,2% no extremo oposto, e o modelo escolhido identifica 64,4% de quem realmente sai, priorizando recall em vez de acurácia, que em base desbalanceada esconde o problema.",
+    tags: ["Python", "scikit-learn", "Power BI", "DAX"],
+    repoUrl: "https://github.com/CaioAssmann03/people-analytics-IBM",
+    icon: "users",
   },
   {
     slug: "lgpd-em-sql",
@@ -52,6 +62,15 @@ export const projects: Project[] = [
     tags: ["SQL", "SQLite", "LGPD", "Python"],
     repoUrl: "https://github.com/CaioAssmann03/lgpd-anonimizacao-sql",
     icon: "shieldCheck",
+  },
+  {
+    slug: "automacoes-imobiliaria",
+    name: "Automações de Imobiliária",
+    description:
+      "4 automações em Python para o administrativo da imobiliária onde trabalho: leem relatórios em PDF do sistema de gestão, cruzam com planilhas de cadastro e geram recibos e listas prontos pra imprimir, sem passar pelo Word. Cada uma confere os próprios números antes de gerar o PDF final (compara totais com os lotes de origem, avisa divergência de código ou UC). O que levava horas por mês sai em segundos.",
+    tags: ["Python", "pdfplumber", "openpyxl", "reportlab"],
+    repoUrl: "https://github.com/CaioAssmann03/AUTOMACOES-IMOBILIARIA",
+    icon: "receipt",
   },
   {
     slug: "mercado-de-dados-poa",
@@ -72,15 +91,6 @@ export const projects: Project[] = [
     icon: "building2",
   },
   {
-    slug: "api-biblioteca",
-    name: "API Biblioteca",
-    description:
-      "API REST para controle de acervo, empréstimos e usuários de uma biblioteca, com autenticação JWT e PostgreSQL. Arquitetura em camadas (router, controller, service, repository). Projeto em equipe, com mais dois colegas.",
-    tags: ["Node.js", "Express", "PostgreSQL", "JWT"],
-    repoUrl: "https://github.com/CaioAssmann03/API_BIBLIOTECA",
-    icon: "library",
-  },
-  {
     slug: "criminalidade-rs",
     name: "Análise de Criminalidade no RS",
     description:
@@ -88,15 +98,6 @@ export const projects: Project[] = [
     tags: ["Python", "Pandas", "Power BI", "DAX"],
     repoUrl: "https://github.com/CaioAssmann03/Criminalidade_Porto_Alegre",
     icon: "map",
-  },
-  {
-    slug: "api-documentos",
-    name: "API de Documentos",
-    description:
-      "CRUD REST com FastAPI e SQLModel (a mesma classe serve de schema de validação e de tabela do banco): paginação, filtro por categoria, busca por título e um endpoint de estatísticas de leitura. Base para os próximos projetos do roadmap (autenticação, agente com LangChain, RAG), pensada pra crescer em vez de ficar isolada. 7 testes com pytest, banco em memória que não toca no banco de desenvolvimento.",
-    tags: ["Python", "FastAPI", "SQLModel", "pytest"],
-    repoUrl: "https://github.com/CaioAssmann03/api-documentos",
-    icon: "fileText",
   },
   {
     slug: "sql-murder-mystery",
@@ -120,6 +121,6 @@ export const projects: Project[] = [
 
 // Quantos projetos aparecem na home antes do link "Ver todos os projetos".
 // O resto some pra /projetos, na mesma ordem.
-export const FEATURED_PROJECTS_COUNT = 8;
+export const FEATURED_PROJECTS_COUNT = 6;
 
 export const moreProjectsNote = "Mais projetos a caminho. Acompanhe o progresso no GitHub.";
