@@ -38,7 +38,10 @@ export interface Project {
     | "briefcase"
     | "users"
     | "shieldCheck"
-    | "fingerprint";
+    | "fingerprint"
+    | "dumbbell"
+    | "fileText"
+    | "receipt";
 }
 
 export interface Certification {

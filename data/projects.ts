@@ -27,6 +27,24 @@ export const projects: Project[] = [
     icon: "wallet",
   },
   {
+    slug: "fithub",
+    name: "FitHub",
+    description:
+      "SaaS multi-tenant para personal trainers gerenciarem alunos, treinos, avaliações físicas e dietas, cada personal isolado no próprio ambiente. Backend em NestJS com Clean Architecture e DDD tático, isolamento de tenant em 4 camadas independentes (schema, contexto assíncrono, Prisma Client Extension e Row-Level Security no Postgres). Backend e modelo de domínio implementados; frontend web e mobile (Next.js e Expo) ainda não construídos nesta versão.",
+    tags: ["NestJS", "TypeScript", "PostgreSQL", "Prisma", "DDD"],
+    repoUrl: "https://github.com/CaioAssmann03/fithub",
+    icon: "dumbbell",
+  },
+  {
+    slug: "automacoes-imobiliaria",
+    name: "Automações de Imobiliária",
+    description:
+      "4 automações em Python para o administrativo da imobiliária onde trabalho: leem relatórios em PDF do sistema de gestão, cruzam com planilhas de cadastro e geram recibos e listas prontos pra imprimir, sem passar pelo Word. Cada uma confere os próprios números antes de gerar o PDF final (compara totais com os lotes de origem, avisa divergência de código ou UC). O que levava horas por mês sai em segundos.",
+    tags: ["Python", "pdfplumber", "openpyxl", "reportlab"],
+    repoUrl: "https://github.com/CaioAssmann03/AUTOMACOES-IMOBILIARIA",
+    icon: "receipt",
+  },
+  {
     slug: "lgpd-em-sql",
     name: "LGPD em SQL",
     description:
@@ -72,6 +90,15 @@ export const projects: Project[] = [
     icon: "map",
   },
   {
+    slug: "api-documentos",
+    name: "API de Documentos",
+    description:
+      "CRUD REST com FastAPI e SQLModel (a mesma classe serve de schema de validação e de tabela do banco): paginação, filtro por categoria, busca por título e um endpoint de estatísticas de leitura. Base para os próximos projetos do roadmap (autenticação, agente com LangChain, RAG), pensada pra crescer em vez de ficar isolada. 7 testes com pytest, banco em memória que não toca no banco de desenvolvimento.",
+    tags: ["Python", "FastAPI", "SQLModel", "pytest"],
+    repoUrl: "https://github.com/CaioAssmann03/api-documentos",
+    icon: "fileText",
+  },
+  {
     slug: "sql-murder-mystery",
     name: "SQL Murder Mystery",
     description:
@@ -93,6 +120,6 @@ export const projects: Project[] = [
 
 // Quantos projetos aparecem na home antes do link "Ver todos os projetos".
 // O resto some pra /projetos, na mesma ordem.
-export const FEATURED_PROJECTS_COUNT = 6;
+export const FEATURED_PROJECTS_COUNT = 8;
 
 export const moreProjectsNote = "Mais projetos a caminho. Acompanhe o progresso no GitHub.";

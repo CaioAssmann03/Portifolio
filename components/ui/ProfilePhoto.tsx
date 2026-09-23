@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { site } from "@/data/site";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useIsTouchDevice } from "@/hooks/useIsTouchDevice";
 
 const initials = site.name
   .split(" ")
@@ -17,6 +18,10 @@ const initials = site.name
 export function ProfilePhoto({ className }: { className?: string }) {
   const [failed, setFailed] = useState(false);
   const reduced = useReducedMotion();
+  // Grayscale-with-color-on-hover only makes sense where hover exists. Touch
+  // devices can never trigger :hover, so the photo would be permanently
+  // black-and-white with no way to reveal color — show it in color instead.
+  const isTouch = useIsTouchDevice();
 
   return (
     <motion.div
@@ -42,7 +47,10 @@ export function ProfilePhoto({ className }: { className?: string }) {
             priority
             sizes="(min-width: 1024px) 380px, 70vw"
             onError={() => setFailed(true)}
-            className="object-cover grayscale transition-all duration-700 ease-out hover:grayscale-0"
+            className={cn(
+              "object-cover transition-all duration-700 ease-out",
+              !isTouch && "grayscale hover:grayscale-0"
+            )}
           />
         ) : (
           <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-6 text-center">
