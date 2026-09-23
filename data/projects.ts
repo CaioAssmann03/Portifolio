@@ -31,8 +31,8 @@ export const projects: Project[] = [
     slug: "api-documentos",
     name: "API de Documentos",
     description:
-      "CRUD REST com FastAPI e SQLModel (a mesma classe serve de schema de validação e de tabela do banco): paginação, filtro por categoria, busca por título e um endpoint de estatísticas de leitura. Base para os próximos projetos do roadmap (autenticação, agente com LangChain, RAG), pensada pra crescer em vez de ficar isolada. 7 testes com pytest, banco em memória que não toca no banco de desenvolvimento.",
-    tags: ["Python", "FastAPI", "SQLModel", "pytest"],
+      "CRUD REST com FastAPI e SQLModel, com autenticação JWT completa: registro, login, refresh token rotativo e logout. Cada usuário só vê os próprios documentos. Base para os próximos projetos do roadmap (agente com LangChain, RAG), pensada pra crescer em vez de ficar isolada. 22 testes com pytest, banco em memória que não toca no banco de desenvolvimento.",
+    tags: ["Python", "FastAPI", "SQLModel", "JWT", "pytest"],
     repoUrl: "https://github.com/CaioAssmann03/api-documentos",
     icon: "fileText",
   },
