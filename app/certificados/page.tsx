@@ -8,7 +8,7 @@ import { site } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Certificados",
-  description: `Todos os certificados de ${site.name}. ${certificationsMeta.totalHours} de estudo na Alura.`,
+  description: `Todos os certificados de ${site.name}. ${certificationsMeta.totalHours} de estudo entre Alura e TIC em Trilhas.`,
   alternates: { canonical: `${site.url}/certificados` },
 };
 
@@ -27,30 +27,42 @@ export default function CertificadosPage() {
           Certificados
         </h1>
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-haze">
-          Todos os cursos concluídos na Alura, agrupados por trilha:{" "}
-          {certificationsMeta.totalHours} de estudo entre {certificationsMeta.period}.
-          Certificado consolidado verificável no link abaixo.
+          Todos os cursos concluídos, agrupados por trilha: {certificationsMeta.totalHours} de
+          estudo entre {certificationsMeta.period}, entre a Alura e o programa TIC em Trilhas
+          (PUCRS / Instituto de Pesquisas Eldorado). Cada trilha ou curso com credencial
+          verificável tem o próprio link Verificar abaixo.
         </p>
 
         <a
-          href={certificationsMeta.url}
+          href={certificationsMeta.alura.url}
           target="_blank"
           rel="noreferrer"
           className="mt-6 inline-flex items-center gap-2 rounded-full border border-paper/20 px-5 py-2.5 font-mono text-[12px] text-paper transition-colors hover:border-paper hover:bg-paper hover:text-ink"
         >
-          Verificar certificado consolidado <ArrowUpRight size={13} />
+          Verificar certificado consolidado (Alura, {certificationsMeta.alura.hours}){" "}
+          <ArrowUpRight size={13} />
         </a>
       </Reveal>
 
       <div className="mt-16 space-y-14">
         {certificationTracks.map((track, ti) => (
           <Reveal key={track.title} delay={ti * 0.05}>
-            <div className="mb-5 flex items-baseline gap-3">
+            <div className="mb-5 flex flex-wrap items-baseline gap-3">
               <Award size={16} className="text-signal" />
               <h2 className="text-xl font-semibold text-paper">{track.title}</h2>
               <span className="font-mono text-[11px] uppercase tracking-wider text-haze">
                 {track.hours}
               </span>
+              {track.verifyUrl ? (
+                <a
+                  href={track.verifyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1 font-mono text-[11px] text-signal transition-opacity hover:opacity-70"
+                >
+                  Verificar <ArrowUpRight size={11} />
+                </a>
+              ) : null}
             </div>
 
             <GlassPanel className="divide-y divide-paper/10">
@@ -63,6 +75,17 @@ export default function CertificadosPage() {
                   <div className="flex items-center gap-3 font-mono text-[11px] text-haze">
                     <span>{course.period}</span>
                     <span className="text-signal">{course.hours}</span>
+                    {course.verifyUrl ? (
+                      <a
+                        href={course.verifyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Verificar ${course.name}`}
+                        className="text-signal transition-opacity hover:opacity-70"
+                      >
+                        <ArrowUpRight size={13} />
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               ))}

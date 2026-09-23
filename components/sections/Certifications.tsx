@@ -12,7 +12,7 @@ export function Certifications() {
         <SectionHeading
           index="05"
           title="Certificações"
-          description={`${certificationsMeta.totalHours} de estudo aplicado na Alura, entre ${certificationsMeta.period}.`}
+          description={`${certificationsMeta.totalHours} de estudo aplicado entre Alura e TIC em Trilhas, entre ${certificationsMeta.period}.`}
         />
 
         <div className="divide-y divide-paper/10 border-y border-paper/10">

@@ -55,12 +55,14 @@ export interface CertificationCourse {
   name: string;
   period: string;
   hours: string;
+  verifyUrl?: string;
 }
 
 export interface CertificationTrack {
   title: string;
   hours: string;
   courses: CertificationCourse[];
+  verifyUrl?: string;
 }
 
 export interface ExperienceItem {
