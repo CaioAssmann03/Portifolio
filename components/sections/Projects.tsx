@@ -3,7 +3,6 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { ProjectGrid } from "@/components/ui/ProjectGrid";
 import { projects, FEATURED_PROJECTS_COUNT } from "@/data/projects";
 
 export function Projects() {
@@ -19,11 +18,13 @@ export function Projects() {
           description="De APIs a dashboards: Python, SQL, backend e Power BI em cenários reais."
         />
 
-        <ProjectGrid className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2">
           {featured.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+            <Reveal key={project.slug} delay={i * 0.06}>
+              <ProjectCard project={project} index={i} />
+            </Reveal>
           ))}
-        </ProjectGrid>
+        </div>
 
         {hasMore ? (
           <Reveal delay={featured.length * 0.06} className="mt-8 flex justify-center">

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { ProjectCard } from "@/components/ui/ProjectCard";
-import { ProjectGrid } from "@/components/ui/ProjectGrid";
 import { projects, moreProjectsNote } from "@/data/projects";
 import { site } from "@/data/site";
 
@@ -31,11 +30,13 @@ export default function ProjetosPage() {
         </p>
       </Reveal>
 
-      <ProjectGrid className="mt-16 grid gap-6 sm:grid-cols-2">
+      <div className="mt-16 grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (
-          <ProjectCard key={project.slug} project={project} index={i} />
+          <Reveal key={project.slug} delay={i * 0.04}>
+            <ProjectCard project={project} index={i} />
+          </Reveal>
         ))}
-      </ProjectGrid>
+      </div>
     </div>
   );
 }
