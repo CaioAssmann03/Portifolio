@@ -1,14 +1,32 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { GlassPanel } from "@/components/ui/GlassPanel";
-import { ProgressBar } from "@/components/ui/ProgressBar";
 import { skillCategoryIcons } from "@/components/ui/IconMap";
 import { skillCategories } from "@/data/skills";
 
+// Grouped by tier instead of a percentage: self-rated numbers say little to a reader.
+// Thresholds read the existing `level` values in data/skills.ts.
+const tiers = [
+  { label: "Uso frequente", min: 70 },
+  { label: "Já usei em projetos", min: 60 },
+  { label: "Em estudo", min: 0 },
+];
+
+function groupByTier(skills: { name: string; level: number }[]) {
+  return tiers
+    .map((tier, i) => ({
+      label: tier.label,
+      items: skills.filter(
+        (s) => s.level >= tier.min && (i === 0 || s.level < tiers[i - 1].min)
+      ),
+    }))
+    .filter((group) => group.items.length > 0);
+}
+
 const accents = [
-  { icon: "text-signal", bar: "bg-signal", edge: "from-signal" },
-  { icon: "text-signal-2", bar: "bg-signal-2", edge: "from-signal-2" },
-  { icon: "text-signal-3", bar: "bg-signal-3", edge: "from-signal-3" },
+  { icon: "text-signal", edge: "from-signal" },
+  { icon: "text-signal-2", edge: "from-signal-2" },
+  { icon: "text-signal-3", edge: "from-signal-3" },
 ];
 
 export function Skills() {
@@ -39,13 +57,22 @@ export function Skills() {
                     </h3>
                   </div>
                   <div className="space-y-4">
-                    {category.skills.map((skill) => (
-                      <ProgressBar
-                        key={skill.name}
-                        label={skill.name}
-                        level={skill.level}
-                        barClassName={accent.bar}
-                      />
+                    {groupByTier(category.skills).map((group) => (
+                      <div key={group.label}>
+                        <p className="mb-2 font-mono text-[10px] uppercase tracking-wider text-haze">
+                          {group.label}
+                        </p>
+                        <ul className="flex flex-wrap gap-2">
+                          {group.items.map((skill) => (
+                            <li
+                              key={skill.name}
+                              className="rounded-full border border-paper/10 px-2.5 py-1 text-[12.5px] text-paper/90"
+                            >
+                              {skill.name}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     ))}
                   </div>
                 </GlassPanel>

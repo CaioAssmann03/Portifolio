@@ -52,6 +52,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           <div className="flex gap-5 font-mono text-[12px]">
             <a
               href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 text-paper/80 transition-colors hover:text-signal"
             >
               <Code2 size={13} /> Repositório
@@ -59,6 +61,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             {project.demoUrl ? (
               <a
                 href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-1.5 text-paper/80 transition-colors hover:text-signal"
               >
                 <ExternalLink size={13} /> Demo

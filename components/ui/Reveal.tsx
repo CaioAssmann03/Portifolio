@@ -20,12 +20,13 @@ export function Reveal({ children, delay = 0, y = 24, className, as = "div" }: R
   const [forced, setForced] = useState(false);
   const Component = motion[as];
 
-  // Safety net: if the IntersectionObserver-based trigger never fires for any
-  // reason (browser quirk, dev Strict Mode double-effect, etc.), force the
-  // content visible after a short delay instead of leaving it hidden forever.
+  // Safety net only for browsers without IntersectionObserver: without it the
+  // in-view trigger can never fire and the content would stay hidden forever.
+  // (A blanket timer would reveal everything after ~1s, defeating scroll reveal.)
   useEffect(() => {
-    const timeout = setTimeout(() => setForced(true), 900);
-    return () => clearTimeout(timeout);
+    if (typeof IntersectionObserver !== "undefined") return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- feature-detection fallback
+    setForced(true);
   }, []);
 
   const visible = reduced || inView || forced;

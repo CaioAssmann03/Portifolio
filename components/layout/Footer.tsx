@@ -15,7 +15,7 @@ export function Footer() {
                 key={link.label}
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={link.label}
                 className="text-haze transition-colors hover:text-signal"
               >

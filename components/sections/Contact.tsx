@@ -25,7 +25,7 @@ export function Contact() {
     const message = String(data.get("message") ?? "").trim();
     const company = String(data.get("company") ?? ""); // honeypot
 
-    if (company) return; // bot detected, silently ignore
+    if (company) return; // bot detected, silently ignore (server also checks it)
 
     if (!name || !isValidEmail(email) || message.length < 10) {
       setStatus("error");
@@ -40,6 +40,11 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, message }),
       });
+      if (res.status === 429) {
+        setStatus("error");
+        setErrorMessage("Muitas tentativas seguidas. Aguarde alguns minutos e tente de novo.");
+        return;
+      }
       if (!res.ok) throw new Error();
       setStatus("success");
       form.reset();
@@ -68,7 +73,7 @@ export function Contact() {
                     key={link.label}
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-3 rounded-xl border border-paper/10 px-4 py-3.5 text-[14px] text-paper/90 transition-colors hover:border-signal/50 hover:text-signal"
                   >
                     <Icon size={16} />

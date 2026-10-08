@@ -55,7 +55,7 @@ export function Navbar() {
           }}
           className="font-mono text-sm font-semibold tracking-tight text-paper"
         >
-          caio<span className="text-signal">.</span>dev
+          Caio<span className="text-signal">.</span>Assmann
         </a>
 
         <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
@@ -117,7 +117,7 @@ export function Navbar() {
           >
             <div className="flex h-20 items-center justify-between px-6">
               <span className="font-mono text-sm font-semibold text-paper">
-                caio<span className="text-signal">.</span>dev
+                Caio<span className="text-signal">.</span>Assmann
               </span>
               <button aria-label="Fechar menu" onClick={() => setOpen(false)} className="text-paper">
                 <X size={24} />

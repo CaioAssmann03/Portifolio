@@ -5,8 +5,13 @@ import { useEffect, useState } from "react";
 export function useActiveSection(ids: string[]) {
   const [active, setActive] = useState<string>(ids[0] ?? "");
 
+  // Callers often pass a fresh array each render; key on its contents so the
+  // observer is not torn down and rebuilt on every re-render (e.g. each scroll tick).
+  const key = ids.join("|");
+
   useEffect(() => {
-    const elements = ids
+    const elements = key
+      .split("|")
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => Boolean(el));
 
@@ -24,7 +29,7 @@ export function useActiveSection(ids: string[]) {
 
     elements.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [ids]);
+  }, [key]);
 
   return active;
 }
