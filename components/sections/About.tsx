@@ -1,17 +1,12 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
-import { projects } from "@/data/projects";
-import { certificationTracks } from "@/data/certifications";
-import { skillCategories } from "@/data/skills";
-
-const totalSkills = skillCategories.reduce((sum, c) => sum + c.skills.length, 0);
-const totalCertifications = certificationTracks.reduce((sum, t) => sum + t.courses.length, 0);
-
+// Numbers taken from the project descriptions in data/projects.ts; update both together.
 const stats = [
-  { label: "Projetos no portfólio", value: projects.length },
-  { label: "Certificações", value: totalCertifications },
-  { label: "Ferramentas em uso", value: totalSkills },
+  { label: "Rotinas automatizadas na Eve Imóveis", value: 4 },
+  { label: "Vagas de Dados analisadas", value: 312 },
+  { label: "Funcionários na análise de turnover", value: 1470 },
+  { label: "Testes automatizados na API de Documentos", value: 22 },
 ];
 
 export function About() {
@@ -21,26 +16,25 @@ export function About() {
         <SectionHeading
           index="01"
           title="Sobre mim"
-          description="De processos administrativos a sistemas em produção: a mesma obsessão por organização, aplicada em escala."
+          description="Quem convive com processo bagunçado aprende a ver onde ele quebra. Eu uso isso para construir o que resolve."
         />
 
         <div className="grid gap-16 md:grid-cols-[1.4fr_1fr]">
           <Reveal delay={0.1} className="space-y-5 text-[15.5px] leading-relaxed text-haze">
             <p>
-              Sou <span className="text-paper">Caio Assmann</span>, estudante de Análise e
-              Desenvolvimento de Sistemas no Senac, com foco em desenvolvimento de software, dados
-              e backend. Comecei
-              como estagiário na Secretaria da Saúde de Porto Alegre, com apoio administrativo e
-              lançamento de dados internos, e hoje atuo na Eve Imóveis com administração
-              condominial, locações e organização de informações de imóveis. Uma vivência
-              prática que me deu um olhar apurado para processos bagunçados e sistemas que
-              precisam de estrutura.
+              Trabalho na <span className="text-paper">Eve Imóveis</span> desde 2022, no
+              administrativo de locações, vendas e condomínios. Foi ali que vi o que acontece
+              quando a informação vive espalhada em PDFs e planilhas: retrabalho, erro e hora
+              perdida. Então comecei a automatizar. Hoje, 4 rotinas em Python leem os relatórios
+              do sistema, conferem os próprios números e entregam recibos e listas prontos para
+              imprimir.{" "}
+              <span className="text-paper">O que levava horas por mês sai em segundos.</span>
             </p>
             <p>
-              Estou aplicando esse olhar para construir software e transformar dados em
-              decisões: sistemas, APIs e dashboards em produção. Construo, projeto após projeto,
-              uma base sólida em Python, SQL, backend e Power BI, sempre documentando o processo
-              e compartilhando o aprendizado.
+              Estudo Análise e Desenvolvimento de Sistemas no Senac e construo projetos do começo
+              ao fim: APIs com autenticação e testes, dashboards em Power BI, um SaaS
+              multi-tenant e análises com dados reais. Gosto de problemas em que dado bagunçado
+              vira decisão, e de explicar por que cada escolha técnica foi feita.
             </p>
           </Reveal>
 
@@ -52,7 +46,7 @@ export function About() {
                     {stat.label}
                   </span>
                   <span className="font-mono text-2xl font-semibold text-signal">
-                    <AnimatedCounter value={stat.value} suffix="+" />
+                    <AnimatedCounter value={stat.value} />
                   </span>
                 </div>
               ))}

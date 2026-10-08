@@ -21,7 +21,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const accent = accents[index % accents.length];
 
   return (
-    <TiltCard>
+    <TiltCard className="h-full">
       <GlassPanel className="group flex h-full flex-col overflow-hidden transition-colors hover:border-paper/25">
         <div
           className={`relative flex h-36 items-center justify-center overflow-hidden border-b border-paper/10 bg-gradient-to-br ${accent.wash} via-transparent to-transparent`}

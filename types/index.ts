@@ -11,7 +11,11 @@ export interface SocialLink {
 
 export interface Skill {
   name: string;
-  level: number; // 0-100, self-assessed proficiency — edit in data/skills.ts
+  icon: string; // key in components/ui/TechIcon.tsx
+  // Project tags (lowercase) that prove this skill; "where I used it" is derived from them.
+  match?: string[];
+  // Shown when no project tag proves the skill (coursework, day-to-day use).
+  note?: string;
 }
 
 export interface SkillCategory {

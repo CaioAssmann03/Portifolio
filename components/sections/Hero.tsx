@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Download } from "lucide-react";
 import { site } from "@/data/site";
@@ -8,10 +9,35 @@ import { TypingText } from "@/components/ui/TypingText";
 import { ProfilePhoto } from "@/components/ui/ProfilePhoto";
 import { AuroraBackground } from "@/components/ui/AuroraBackground";
 import { scrollToSection } from "@/utils/helpers";
+import { gsap, useGSAP, NO_MOTION_PREF } from "@/lib/gsap";
 
 export function Hero() {
+  const section = useRef<HTMLElement>(null);
+
+  // Scroll parallax: the layers drift at different speeds as the hero leaves the viewport.
+  // Targets are plain wrappers, so they never share a transform with the Framer Motion children.
+  useGSAP(
+    () => {
+      const mm = gsap.matchMedia();
+      mm.add(NO_MOTION_PREF, () => {
+        const scrollTrigger = {
+          trigger: section.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        };
+        gsap.to("[data-parallax='wordmark']", { y: 140, ease: "none", scrollTrigger });
+        gsap.to("[data-parallax='sparkline']", { y: -60, ease: "none", scrollTrigger });
+        gsap.to("[data-parallax='text']", { y: -50, opacity: 0.25, ease: "none", scrollTrigger });
+        gsap.to("[data-parallax='photo']", { y: 90, ease: "none", scrollTrigger });
+      });
+    },
+    { scope: section }
+  );
+
   return (
     <section
+      ref={section}
       id="top"
       className="relative flex min-h-[100svh] items-center overflow-hidden pt-28 pb-20"
     >
@@ -20,6 +46,7 @@ export function Hero() {
       {/* Ambient giant outlined wordmark */}
       <div
         aria-hidden
+        data-parallax="wordmark"
         className="pointer-events-none absolute inset-0 flex select-none flex-col items-center justify-center gap-0 overflow-hidden opacity-[var(--wordmark-opacity)]"
       >
         <span className="whitespace-nowrap text-[22vw] font-black leading-[0.8] tracking-tighter text-transparent [-webkit-text-stroke:1.5px_var(--color-paper)] md:text-[16vw]">
@@ -33,6 +60,7 @@ export function Hero() {
       {/* Ambient sparkline */}
       <svg
         aria-hidden
+        data-parallax="sparkline"
         viewBox="0 0 600 200"
         className="pointer-events-none absolute -right-24 bottom-10 h-64 w-[36rem] opacity-30 md:opacity-40"
         fill="none"
@@ -50,7 +78,7 @@ export function Hero() {
       </svg>
 
       <div className="relative mx-auto grid w-full max-w-6xl items-center gap-16 px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8">
-        <div>
+        <div data-parallax="text">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -61,7 +89,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-signal opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-signal" />
             </span>
-            Disponível para novas oportunidades
+            Aberto a vagas júnior em Dados e Backend
           </motion.div>
 
           <motion.h1
@@ -106,7 +134,9 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <ProfilePhoto className="lg:ml-auto" />
+        <div data-parallax="photo">
+          <ProfilePhoto className="lg:ml-auto" />
+        </div>
       </div>
 
       <motion.button

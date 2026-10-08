@@ -1,24 +1,22 @@
 import type { SkillCategory } from "@/types";
 
-// Níveis revisados em 2026-09-02 com base em evidência real de projeto (não são mais
-// o chute inicial da primeira versão). Onde eu (Claude) subi ou desci um número, foi
-// porque um projeto real comprova (ou não) aquele nível — ver perfil-base.md no
-// projeto CURRÍCULO VAGAS para o motivo de cada um. Ainda assim é uma autoavaliação:
-// ajuste como quiser, o número final é seu.
+// "Onde usei" is derived: each skill lists the project tags that prove it (`match`),
+// and components/sections/Skills.tsx finds the projects carrying those tags in
+// data/projects.ts. Skills no project tag proves get a short `note` instead.
 export const skillCategories: SkillCategory[] = [
   {
     id: "dados",
     title: "Linguagens & Dados",
     icon: "database",
     skills: [
-      { name: "Python", level: 78 },
-      { name: "SQL", level: 78 },
-      { name: "Pandas", level: 72 },
-      { name: "scikit-learn", level: 60 },
-      { name: "JavaScript", level: 55 },
-      { name: "NumPy", level: 65 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "SQLite", level: 68 },
+      { name: "Python", icon: "python", match: ["python"] },
+      { name: "SQL", icon: "sql", match: ["sql"] },
+      { name: "Pandas", icon: "pandas", match: ["pandas"] },
+      { name: "NumPy", icon: "numpy", note: "Curso na Alura" },
+      { name: "scikit-learn", icon: "scikitlearn", match: ["scikit-learn"] },
+      { name: "PostgreSQL", icon: "postgresql", match: ["postgresql"] },
+      { name: "SQLite", icon: "sqlite", match: ["sqlite"] },
+      { name: "JavaScript", icon: "javascript", note: "Base do Node.js e do React" },
     ],
   },
   {
@@ -26,10 +24,9 @@ export const skillCategories: SkillCategory[] = [
     title: "Business Intelligence",
     icon: "brain",
     skills: [
-      { name: "Excel", level: 85 },
-      { name: "Power BI", level: 80 },
-      { name: "DAX", level: 68 },
-      { name: "Power Query", level: 65 },
+      { name: "Power BI", icon: "powerbi", match: ["power bi"] },
+      { name: "DAX", icon: "dax", match: ["dax"] },
+      { name: "Excel", icon: "excel", note: "Planilhas do dia a dia" },
     ],
   },
   {
@@ -37,13 +34,14 @@ export const skillCategories: SkillCategory[] = [
     title: "Backend & APIs",
     icon: "server",
     skills: [
-      { name: "Node.js", level: 62 },
-      { name: "Express", level: 58 },
-      { name: "APIs REST", level: 68 },
-      { name: "Supabase", level: 60 },
-      { name: "JWT", level: 55 },
-      { name: "Oracle APEX", level: 55 },
-      { name: "POO", level: 60 },
+      { name: "Node.js", icon: "nodejs", match: ["node.js"] },
+      { name: "Express", icon: "express", match: ["express"] },
+      { name: "FastAPI", icon: "fastapi", match: ["fastapi"] },
+      { name: "NestJS", icon: "nestjs", match: ["nestjs"] },
+      { name: "Supabase", icon: "supabase", match: ["supabase"] },
+      { name: "JWT", icon: "jwt", match: ["jwt"] },
+      { name: "Prisma", icon: "prisma", match: ["prisma"] },
+      { name: "pytest", icon: "pytest", match: ["pytest"] },
     ],
   },
   {
@@ -51,23 +49,28 @@ export const skillCategories: SkillCategory[] = [
     title: "Front-end",
     icon: "layoutGrid",
     skills: [
-      { name: "HTML", level: 75 },
-      { name: "CSS", level: 68 },
-      { name: "React", level: 62 },
-      { name: "Next.js", level: 62 },
-      { name: "TypeScript", level: 60 },
-      { name: "Tailwind CSS", level: 65 },
+      { name: "HTML", icon: "html", note: "Base de todos os projetos web" },
+      { name: "CSS", icon: "css", note: "Base de todos os projetos web" },
+      { name: "React", icon: "react", match: ["react"] },
+      { name: "Next.js", icon: "nextjs", match: ["next.js"] },
+      { name: "TypeScript", icon: "typescript", match: ["typescript"] },
+      { name: "Tailwind CSS", icon: "tailwind", match: ["tailwind css"] },
     ],
   },
   {
     id: "ferramentas",
     title: "Ferramentas",
     icon: "wrench",
-    skills: [
-      { name: "Git & GitHub", level: 75 },
-      { name: "VS Code", level: 85 },
-      { name: "Insomnia / Postman", level: 65 },
-      { name: "Suporte técnico", level: 78 },
-    ],
+    skills: [{ name: "Git & GitHub", icon: "git", note: "Todos os projetos" }],
   },
+];
+
+// Skills without a recognizable logo or a project to point at: listed as plain chips.
+export const alsoUse = [
+  "Power Query",
+  "Oracle APEX",
+  "POO",
+  "Insomnia / Postman",
+  "VS Code",
+  "Suporte técnico",
 ];

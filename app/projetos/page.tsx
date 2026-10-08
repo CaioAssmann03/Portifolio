@@ -32,7 +32,7 @@ export default function ProjetosPage() {
 
       <div className="mt-16 grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (
-          <Reveal key={project.slug} delay={i * 0.04}>
+          <Reveal key={project.slug} delay={i * 0.04} className="h-full">
             <ProjectCard project={project} index={i} />
           </Reveal>
         ))}

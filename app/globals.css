@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #000000;
-  --panel: #131313;
+  /* Monochrome palette with a single accent (--signal). --signal-2/-3 are
+     neutral tints kept as tokens so existing gradients and icon washes stay valid. */
+  --bg: #0a0a0b;
+  --panel: #141416;
   --hairline: #ffffff;
-  --paper: #ffffff;
-  --haze: #9a9a9a;
+  --paper: #fafafa;
+  --haze: #a1a1aa;
   --signal: #3d6bff;
-  --signal-2: #a855f7;
-  --signal-3: #f5b93d;
+  --signal-2: #e4e4e7;
+  --signal-3: #71717a;
   --wordmark-opacity: 0.07;
 }
 
 .light {
-  --bg: #ffffff;
-  --panel: #f4f4f4;
-  --hairline: #000000;
-  --paper: #0a0a0a;
-  --haze: #5a5a5a;
-  --signal: #2552e0;
-  --signal-2: #9333ea;
-  --signal-3: #d97706;
+  /* Light theme keeps the blue accent but brings back violet and amber as
+     supporting highlights, on a cool tinted background with white cards. */
+  --bg: #f1f4fc;
+  --panel: #ffffff;
+  --hairline: #0b1020;
+  --paper: #0b1020;
+  --haze: #4a5470;
+  --signal: #2347e6;
+  --signal-2: #7c3aed;
+  --signal-3: #ea7a0c;
   --wordmark-opacity: 0.16;
 }
 
@@ -48,6 +52,27 @@ section[id] {
 
 body {
   background-color: var(--color-ink);
+}
+
+/* Light theme: soft colored glow behind the page and white, tinted cards with depth */
+.light body {
+  background-image:
+    radial-gradient(60rem 40rem at 90% -10%, rgb(124 58 237 / 0.1), transparent 60%),
+    radial-gradient(55rem 40rem at -10% 20%, rgb(35 71 230 / 0.1), transparent 60%),
+    radial-gradient(50rem 35rem at 100% 70%, rgb(234 122 12 / 0.07), transparent 60%);
+  background-attachment: fixed;
+}
+
+.light .glass-panel {
+  background-color: #ffffff;
+  border-color: rgb(35 71 230 / 0.16);
+  box-shadow:
+    0 1px 2px rgb(11 16 32 / 0.04),
+    0 12px 32px -14px rgb(35 71 230 / 0.28);
+}
+
+.light .glass-panel:hover {
+  border-color: rgb(35 71 230 / 0.4);
 }
 
 ::selection {
@@ -100,6 +125,55 @@ html.custom-cursor * {
   }
   66% {
     transform: translate(20px, 20px);
+  }
+}
+
+/* Tech marquee: seamless loop (track = 2 identical groups, slides one group). */
+@keyframes marquee-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee-slide 45s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Brand-colored logos with per-theme fallbacks (set inline by TechIcon). */
+.tech-logo {
+  color: var(--c-dark);
+}
+
+.light .tech-logo {
+  color: var(--c-light);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    mask-image: none;
+  }
+
+  .marquee-track {
+    animation: none !important;
   }
 }
 

@@ -21,7 +21,7 @@ export default async function Image() {
           flexDirection: "column",
           justifyContent: "center",
           padding: "80px",
-          background: "#000000",
+          background: "#0a0a0b",
           color: "#ffffff",
           fontFamily: "Geist",
         }}
@@ -44,7 +44,7 @@ export default async function Image() {
         <div style={{ display: "flex", fontSize: 88, fontWeight: 700, marginTop: 24, lineHeight: 1.05 }}>
           {site.name}
         </div>
-        <div style={{ display: "flex", fontSize: 32, color: "#9a9a9a", marginTop: 20 }}>
+        <div style={{ display: "flex", fontSize: 32, color: "#a1a1aa", marginTop: 20 }}>
           {site.role}
         </div>
       </div>

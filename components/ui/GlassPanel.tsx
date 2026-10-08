@@ -35,7 +35,7 @@ export function GlassPanel({
         // composite, and this component renders 10+ times on the home page (every
         // skill/project card). Keep it off below md: where it caused real jank on
         // phones, full frosted-glass look stays on tablet/desktop.
-        "group/panel relative isolate overflow-hidden rounded-2xl border border-paper/10 bg-paper/[0.06] md:bg-paper/[0.04] md:backdrop-blur-xl",
+        "glass-panel group/panel relative isolate overflow-hidden rounded-2xl border border-paper/10 bg-paper/[0.06] md:bg-paper/[0.04] md:backdrop-blur-xl",
         className
       )}
     >

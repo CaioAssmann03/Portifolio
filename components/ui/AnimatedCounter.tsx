@@ -43,7 +43,7 @@ export function AnimatedCounter({ value, duration = 1200, suffix = "" }: Animate
 
   return (
     <span ref={ref}>
-      {display}
+      {display.toLocaleString("pt-BR")}
       {suffix}
     </span>
   );

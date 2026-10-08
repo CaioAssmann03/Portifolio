@@ -3,9 +3,9 @@ import type { SocialLink } from "@/types";
 export const site = {
   name: "Caio Assmann",
   role: "Desenvolvedor de Software",
-  roles: ["Desenvolvedor de Software", "Full-Stack", "Analista de Dados", "Backend Developer"],
+  roles: ["Desenvolvedor de Software", "Analista de Dados"],
   tagline:
-    "Construo software full-stack e transformo dados em decisões: Python, SQL, APIs e Power BI.",
+    "Transformo processos bagunçados em sistemas e dados que o negócio consegue usar, com Python, SQL, APIs e Power BI.",
   email: "caioassmann7@gmail.com",
   github: "https://github.com/CaioAssmann03",
   linkedin: "https://www.linkedin.com/in/caio-assmann/",

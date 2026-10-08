@@ -7,9 +7,9 @@ export const journey: JourneyItem[] = [
     role: "Auxiliar Administrativo",
     period: "2022 — Atual",
     bullets: [
-      "Administração condominial, locações e vendas",
-      "Atendimento ao cliente e suporte em processos de documentação legal",
-      "Organização de visitas e controle de informações de imóveis",
+      "Administração de condomínios, locações e vendas",
+      "Automatizei 4 rotinas em Python que geram recibos e listas a partir de relatórios em PDF: o que levava horas por mês sai em segundos",
+      "Organização de visitas, controle de informações de imóveis e suporte à documentação legal",
     ],
   },
   {
@@ -18,9 +18,8 @@ export const journey: JourneyItem[] = [
     role: "Estagiário",
     period: "2020 — 2021",
     bullets: [
-      "Apoio em operações administrativas e atendimento ao público",
-      "Lançamentos e provisionamento de dados internos",
-      "Desenvolvimento de habilidades em gestão de dados e comunicação interpessoal",
+      "Apoio administrativo e atendimento ao público",
+      "Lançamento e provisionamento de dados internos: primeiro contato com gestão de dados",
     ],
   },
   {
@@ -29,8 +28,8 @@ export const journey: JourneyItem[] = [
     role: "Análise e Desenvolvimento de Sistemas",
     period: "Fevereiro de 2024 — Em andamento",
     bullets: [
-      "Foco em desenvolvimento de software, dados e backend",
-      "Projetos práticos aplicando Python, SQL e Machine Learning",
+      "Foco em desenvolvimento de software, banco de dados e backend",
+      "Projetos publicados no GitHub: APIs com JWT e testes, dashboards em Power BI e um SaaS multi-tenant",
     ],
   },
 ];
